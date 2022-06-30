@@ -14,11 +14,15 @@
     <div class="root">
         <img src="./assets/btn.png" alt="btn" title="Restart" class="btn" id="btn">
         <!-- <img src="./assets/backmodified.jpg" alt="bg-image" class="bg-img"> -->
+        <!-- <video muted loop id="leopard-video">
+            <source id="leopard-video-src" type="video/mp4">
+        </video> -->
         <div class="first" id="first">
             <span id="status">Not Connected</span>
             <div id="connect-btn" class="button">Connect</div>
         </div>
         <div class="output-container" id="output-container">
+            <div id="bg-div"></div>
             <div class="play-btn" id="play-btn">Start</div>
             <!-- <div class="stop-btn" id="stop-btn">Stop</div> -->
             <div class="gauges-container" id="gauges-container">
@@ -30,10 +34,13 @@
                     <input type="" name="" value="0" id="gauge-2" hidden>
                 </div>
             </div>
+            <video muted loop id="leopard-video">
+                <source id="leopard-video-src" type="video/mp4">
+            </video>
             <div class="modal" id="modal">
                 <div class="modal-contents">
                     <img src="./assets/winner.png" alt="winner" class="modal-img" id="winner-img">
-                    <img src="./assets/loser.png" alt="loser" class="modal-img" id="loser-img">                    
+                    <img src="./assets/loser.png" alt="loser" class="modal-img" id="loser-img">
                     <span id="modal-text"></span>
                 </div>
             </div>

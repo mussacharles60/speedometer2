@@ -362,6 +362,20 @@ var finalReadingRobot = 0;
 var finalReadingUser = 0;
 
 function start() {
+    $('#bg-div').show();
+    $('#gauges-container').css('position', 'absolute');
+    $('#gauges-container').css('top', '10vh');
+    // load the video from assets using jquery
+    $('#leopard-video').attr('src', 'assets/leopard-3.mp4');
+    $('#leopard-video').get(0).play();
+    // increase video playback speed
+    $('#leopard-video').get(0).playbackRate = 1.5;
+    // $('#leopard-video').on('ended', () => {
+    //     $('#leopard-video').attr('src', 'assets/leopard-2.mp4');
+    //     $('#leopard-video').get(0).play();
+    // });
+    $('#leopard-video').show();
+
     finalReadingRobot = 0;
     finalReadingUser = 0;
     robot_rotation = 0;
@@ -380,6 +394,8 @@ function start() {
             $("#gauge-2").trigger('keyup');
         }
     }, 150);
+
+
 }
 
 function stop() {
@@ -390,6 +406,8 @@ function stop() {
     $("#gauge-1").trigger('keyup');
     $("#gauge-2").val(0);
     $("#gauge-2").trigger('keyup');
+    $('#gauges-container').css('position', 'relative');
+    $('#gauges-container').css('top', '20px');
 
     if ((finalReadingRobot > finalReadingUser) && (finalReadingUser == 201 || finalReadingRobot == 201)) {
         $('#modal-text').text('You Lose');
@@ -411,6 +429,13 @@ function stop() {
             $('#modal').hide();
         }, 3000);
     }
+    $('#bg-div').hide();
+    // stop the video
+    $('#leopard-video').get(0).pause();
+    // also reset the video to the first frame
+    $('#leopard-video').get(0).currentTime = 0;
+    // hide the video
+    $('#leopard-video').hide();
 
     started = false;
     ipcRenderer.send('on-stop-device-click', 'do-it');

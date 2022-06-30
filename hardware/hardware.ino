@@ -1,9 +1,10 @@
-const int IN_D0 = D5;
-const int BUTTON = D6;
+const int IN_D0 = 4;
+const int BUTTON = 10;
 
 int pulse = 0;
 int pulseChange = 0;
-double counter = 0.0;
+double counter = 0;
+double lastCounter = 0;
 boolean should_send = false;
 
 unsigned long current_time;
@@ -14,7 +15,7 @@ String data = "";
 void setup() {
   Serial.begin(9600);
   pinMode(IN_D0, INPUT);
-  pinMode(D6, INPUT_PULLUP);
+  pinMode(BUTTON, INPUT_PULLUP);
 }
 
 void loop() {
@@ -29,7 +30,7 @@ void loop() {
     if (data.indexOf("start") >= 0) {
       should_send = true;
     } else if (data.indexOf("stop") >= 0) {
-      counter = 0.0;
+      counter = 0;
       should_send = false;
     }
     data = "";
@@ -44,9 +45,12 @@ void loop() {
     else {
       pulseChange = pulse;
     }
-    Serial.println(counter);
+    if (lastCounter != counter) {
+      lastCounter = counter;
+      Serial.println(counter);
+    }
   } else {
-    counter = 0.0;
+    counter = 0;
   }
 
   if (digitalRead(BUTTON) == 0) {
