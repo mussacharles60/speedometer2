@@ -35,40 +35,29 @@ const createWindow = () => {
     mainWindow.on('ready-to-show', () => {
         mainWindow.show();
         // get the stored value of 'isMaximized' from local storage using executeJavaScript
-        mainWindow.webContents.executeJavaScript(`
-            localStorage.getItem('isMaximized')
-        `).then(isMaximized => {
+        mainWindow.webContents.executeJavaScript(`localStorage.getItem('isMaximized')`).then(isMaximized => {
             if (isMaximized) {
                 mainWindow.maximize();
             }
-        }).catch(err => {
-            console.log(err);
-        });
+        }).catch(err => console.log(err));
         // mainWindow.webContents.openDevTools(); // Open the DevTools.
     });
 
     // listen when window is maximized
     mainWindow.on('maximize', () => {
         // save to local storage by executing mainWindow.webContents.executeJavaScript
-        mainWindow.webContents.executeJavaScript(`
-            localStorage.setItem('isMaximized', true);
-        `);
+        mainWindow.webContents.executeJavaScript(`localStorage.setItem('isMaximized', true)`);
     });
 
     // listen when window is unmaximized
     mainWindow.on('unmaximize', () => {
         // save to local storage by executing mainWindow.webContents.executeJavaScript
-        mainWindow.webContents.executeJavaScript(`
-            localStorage.setItem('isMaximized', false);
-        `);
+        mainWindow.webContents.executeJavaScript(`localStorage.removeItem('isMaximized')`);
     });
-
-
-
 
     // mainWindow.webContents.openDevTools(); // Open the DevTools.
 
-    ipcMain.on('on-dev-click', (event, arg) => {
+    ipcMain.on('on-dev-click', (_event, _arg) => {
         if (is_devtool_opened) {
             if (!is_app_quit && !mainWindow.isDestroyed()) {
                 mainWindow.webContents.closeDevTools();
@@ -82,7 +71,7 @@ const createWindow = () => {
         }
     });
 
-    ipcMain.on('on-restart-click', (event, arg) => {
+    ipcMain.on('on-restart-click', (_event, _arg) => {
         if (!is_app_quit && !mainWindow.isDestroyed()) {
             is_app_quit = true;
             app.relaunch();
@@ -90,7 +79,7 @@ const createWindow = () => {
         }
     });
 
-    ipcMain.on('on-start-click', (event, arg) => {
+    ipcMain.on('on-start-click', (_event, _arg) => {
         if (!is_app_quit && !mainWindow.isDestroyed()) {
             initSerialPort();
         }
@@ -102,7 +91,7 @@ const createWindow = () => {
         }
     });
 
-    ipcMain.on('escape-key', (event, arg) => {
+    ipcMain.on('escape-key', (_event, _arg) => {
         if (!is_dialog_opened) {
             closeSerialPort();
             if (mainWindow != null) {
@@ -111,7 +100,7 @@ const createWindow = () => {
         }
     });
 
-    ipcMain.on('on-start-device-click', (event, arg) => {
+    ipcMain.on('on-start-device-click', (_event, _arg) => {
         if (!is_app_quit && !mainWindow.isDestroyed()) {
             if (serialport != null && serialport.isOpen) {
                 // send data to serial port
@@ -124,7 +113,7 @@ const createWindow = () => {
         }
     });
 
-    ipcMain.on('on-stop-device-click', (event, arg) => {
+    ipcMain.on('on-stop-device-click', (_event, _arg) => {
         if (!is_app_quit && !mainWindow.isDestroyed()) {
             if (serialport != null && serialport.isOpen) {
                 // send data to serial port
