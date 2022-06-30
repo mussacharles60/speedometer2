@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Spedometer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css" type="text/css">
+    <link rel="stylesheet" href="speedometer.css" type="text/css">
+</head>
+
+<body>
+    <div class="root">
+        <img src="./assets/btn.png" alt="btn" title="Restart" class="btn" id="btn">
+        <!-- <img src="./assets/backmodified.jpg" alt="bg-image" class="bg-img"> -->
+        <div class="first" id="first">
+            <span id="status">Not Connected</span>
+            <div id="connect-btn" class="button">Connect</div>
+        </div>
+        <div class="output-container" id="output-container">
+            <div class="play-btn" id="play-btn">Start</div>
+            <!-- <div class="stop-btn" id="stop-btn">Stop</div> -->
+            <div class="gauges-container" id="gauges-container">
+                <div class="gauge">
+                    <input type="" name="" value="0" id="gauge-1" hidden>
+                </div>
+                <div class="space"></div>
+                <div class="gauge">
+                    <input type="" name="" value="0" id="gauge-2" hidden>
+                </div>
+            </div>
+            <div class="modal" id="modal">
+                <div class="modal-contents">
+                    <img src="./assets/winner.png" alt="winner" class="modal-img" id="winner-img">
+                    <img src="./assets/loser.png" alt="loser" class="modal-img" id="loser-img">                    
+                    <span id="modal-text"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="splash" id="splash">
+        <div class="splash-bg"></div>
+        <video muted id="video">
+            <source src="./assets/logo.mp4" type="video/mp4">
+        </video>
+    </div>
+    <script src="speedometer.js"></script>
+    <script src="index.js"></script>
+    <!-- <script src="anim.js"></script> -->
+</body>
+
+</html>

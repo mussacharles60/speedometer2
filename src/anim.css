@@ -1,0 +1,87 @@
+.cadre-loading {
+    background: #29588B;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.loading {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-form {
+    display: inline-block;
+    margin: 0.5%;
+    height: 20px;
+    width: 20px;
+    background: white;
+    position: absolute;
+}
+
+#loaderForm_1 {
+    animation: animLoader1 2s infinite;
+}
+
+#loaderForm_2 {
+    animation: animLoader2 2s infinite;
+}
+
+#loaderForm_3 {
+    animation: animLoader3 2s infinite;
+}
+
+#loaderForm_4 {
+    animation: animLoader4 2s infinite;
+}
+
+#loaderForm_5 {
+    animation: animLoader5 2s infinite;
+}
+
+@keyframes animLoader1 {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(10) rotate(180deg);
+        border-radius: 50%;
+        opacity: 0;
+    }
+}
+
+@keyframes animLoader2 {
+    20% {
+        transform: scale(3);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(10) rotate(180deg);
+        border-radius: 50%;
+        opacity: 0;
+    }
+}
+
+@keyframes animLoader3 {
+    40% {
+        transform: scale(3);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(15) rotate(180deg);
+        border-radius: 50%;
+        opacity: 0;
+    }
+}
