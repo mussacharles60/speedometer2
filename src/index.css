@@ -184,7 +184,8 @@ body {
     align-items: center;
     position: fixed;
     z-index: 0;
-    background: #5D5C5D;
+    /* background: #5D5C5D; */
+    background: #fff;
 }
 
 .play-btn {

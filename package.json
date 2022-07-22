@@ -1,8 +1,8 @@
 {
     "name": "speedometer2",
-    "productName": "Speedometer2",
+    "productName": "Speedometer3",
     "version": "1.0.0",
-    "description": "Speedometer2 (Imperial Innovation TZ)",
+    "description": "Speedometer3 (Imperial Innovation TZ)",
     "main": "src/main.js",
     "scripts": {
         "start": "electron-forge start",
@@ -18,7 +18,7 @@
         "url": "git@github.com:mussacharles60/speedometer2.git"
     },
     "build": {
-        "appId": "speedometer2",
+        "appId": "speedometer3",
         "buildDependenciesFromSource": true,
         "asar": true,
         "win": {
@@ -30,14 +30,14 @@
         "nsis": {
             "installerIcon": "src/icon.ico",
             "uninstallerIcon": "src/icon.ico",
-            "uninstallDisplayName": "Speedometer2",
+            "uninstallDisplayName": "Speedometer3",
             "license": "license.txt",
             "oneClick": false,
             "allowToChangeInstallationDirectory": true
         }
     },
     "keywords": [
-        "Speedometer2",
+        "Speedometer3",
         "commercial product",
         "interactive contents",
         "imperial innovations",
@@ -52,7 +52,7 @@
                 {
                     "name": "@electron-forge/maker-squirrel",
                     "config": {
-                        "name": "Speedometer2"
+                        "name": "Speedometer3"
                     }
                 },
                 {

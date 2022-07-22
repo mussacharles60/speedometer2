@@ -311,7 +311,8 @@ ipcRenderer.on('on-serial-data', (_event, data) => {
     $('#play-btn').hide();
     $('#gauges-container').show();
     console.log("on-serial-data:", data);
-    data = data / 1.8;
+    // data = data / 1.8;
+    data = data / 1.0;
     // convert to int
     data = parseInt(data);
     finalReadingUser = data;
@@ -363,18 +364,18 @@ var finalReadingUser = 0;
 
 function start() {
     $('#bg-div').show();
-    $('#gauges-container').css('position', 'absolute');
-    $('#gauges-container').css('top', '10vh');
-    // load the video from assets using jquery
-    $('#leopard-video').attr('src', 'assets/leopard-3.mp4');
-    $('#leopard-video').get(0).play();
+    // $('#gauges-container').css('position', 'absolute');
+    // $('#gauges-container').css('top', '10vh');
+    // // load the video from assets using jquery
+    // $('#leopard-video').attr('src', 'assets/leopard-3.mp4');
+    // $('#leopard-video').get(0).play();
     // increase video playback speed
-    $('#leopard-video').get(0).playbackRate = 1.5;
-    // $('#leopard-video').on('ended', () => {
-    //     $('#leopard-video').attr('src', 'assets/leopard-2.mp4');
-    //     $('#leopard-video').get(0).play();
-    // });
-    $('#leopard-video').show();
+    // $('#leopard-video').get(0).playbackRate = 1.5;
+    // // $('#leopard-video').on('ended', () => {
+    // //     $('#leopard-video').attr('src', 'assets/leopard-2.mp4');
+    // //     $('#leopard-video').get(0).play();
+    // // });
+    // $('#leopard-video').show();
 
     finalReadingRobot = 0;
     finalReadingUser = 0;
@@ -406,8 +407,8 @@ function stop() {
     $("#gauge-1").trigger('keyup');
     $("#gauge-2").val(0);
     $("#gauge-2").trigger('keyup');
-    $('#gauges-container').css('position', 'relative');
-    $('#gauges-container').css('top', '20px');
+    // $('#gauges-container').css('position', 'relative');
+    // $('#gauges-container').css('top', '20px');
 
     if ((finalReadingRobot > finalReadingUser) && (finalReadingUser == 201 || finalReadingRobot == 201)) {
         $('#modal-text').text('You Lose');
@@ -430,12 +431,12 @@ function stop() {
         }, 3000);
     }
     $('#bg-div').hide();
-    // stop the video
-    $('#leopard-video').get(0).pause();
-    // also reset the video to the first frame
-    $('#leopard-video').get(0).currentTime = 0;
-    // hide the video
-    $('#leopard-video').hide();
+    // // stop the video
+    // // $('#leopard-video').get(0).pause();
+    // // also reset the video to the first frame
+    // // $('#leopard-video').get(0).currentTime = 0;
+    // // hide the video
+    // // $('#leopard-video').hide();
 
     started = false;
     ipcRenderer.send('on-stop-device-click', 'do-it');
